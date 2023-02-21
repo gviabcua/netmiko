@@ -61,6 +61,8 @@ from netmiko.cisco import CiscoViptelaSSH
 from netmiko.cisco import CiscoWlcSSH
 from netmiko.cisco import CiscoXrSSH, CiscoXrTelnet, CiscoXrFileTransfer
 from netmiko.citrix import NetscalerSSH
+from netmiko.classicdevices import ClassicdevicesSSH
+from netmiko.classicdevices import ClassicdevicesTelnet
 from netmiko.cloudgenix import CloudGenixIonSSH
 from netmiko.corelight import CorelightLinuxSSH
 from netmiko.coriant import CoriantSSH
@@ -256,6 +258,7 @@ CLASS_MAPPER_BASE = {
     "cisco_ioswlc": CiscoIosSSH,
     "cisco_xe": CiscoIosSSH,
     "cisco_xr": CiscoXrSSH,
+    "classicdevices": ClassicdevicesSSH,
     "cloudgenix_ion": CloudGenixIonSSH,
     "corelight_linux": CorelightLinuxSSH,
     "coriant": CoriantSSH,
@@ -435,6 +438,7 @@ CLASS_MAPPER["cisco_xr_telnet"] = CiscoXrTelnet
 CLASS_MAPPER["cisco_s200_telnet"] = CiscoS200Telnet
 CLASS_MAPPER["cisco_s300_telnet"] = CiscoS300Telnet
 CLASS_MAPPER["cisco_s500_telnet"] = CiscoS300Telnet
+CLASS_MAPPER["classicdevices_telnet"] = ClassicdevicesTelnet
 CLASS_MAPPER["dell_dnos6_telnet"] = DellDNOS6Telnet
 CLASS_MAPPER["dell_powerconnect_telnet"] = DellPowerConnectTelnet
 CLASS_MAPPER["dlink_ds_telnet"] = DlinkDSTelnet
