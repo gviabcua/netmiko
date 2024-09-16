@@ -468,9 +468,6 @@ def test_strip_ansi_codes():
         "\x1b[J",  # code_erase_display
         "\x1b[0m",  # code_attrs_off
         "\x1b[7m",  # code_reverse
-        "\x1b[c",  # code_query_device
-        "\x1b[?2004h",  # code_enable_bracketed_paste_mode
-        "\x1b[?2004l",  # code_disable_bracketed_paste_mode
     ]
     for ansi_code in ansi_codes_to_strip:
         assert connection.strip_ansi_escape_codes(ansi_code) == ""

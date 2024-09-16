@@ -1,5 +1,4 @@
 """Subclass specific to Cisco FTD."""
-
 from typing import Any
 from netmiko.no_enable import NoEnable
 from netmiko.no_config import NoConfig

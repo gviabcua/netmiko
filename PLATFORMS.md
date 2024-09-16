@@ -73,7 +73,6 @@
 
 - A10
 - Accedian
-- Alaxala AX2600S and AX3600S 
 - Allied Telesis AlliedWare Plus
 - Aruba OS (Wireless Controllers/WAPs)
 - Aruba AOS-CX
@@ -81,7 +80,6 @@
 - C-DOT CROS
 - Ciena SAOS
 - Citrix Netscaler
-- Cisco APIC (Linux)
 - Cisco Telepresence
 - Cisco Viptela
 - Check Point GAiA
@@ -98,7 +96,6 @@
 - F5 TMSH
 - F5 Linux
 - Fortinet
-- Garderos GRS
 - MRV Communications OptiSwitch
 - MRV LX
 - Nokia/Alcatel SR-OS
@@ -109,7 +106,6 @@
 - Sophos SFOS
 - Ubiquiti Unifi Switch
 - Versa Networks FlexVNF
-- Vertiv MPH Power Distribution Units
 - Watchguard Firebox
 - Zyxel NOS
 - 6WIND TurboRouter

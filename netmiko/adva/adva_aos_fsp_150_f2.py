@@ -1,5 +1,4 @@
 """Adva support."""
-
 import re
 from typing import Any, Optional
 from netmiko.no_enable import NoEnable

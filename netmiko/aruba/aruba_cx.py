@@ -4,7 +4,6 @@ Aruba AOS CX support.
 For use with Aruba AOS CX devices.
 
 """
-
 from typing import Any
 from netmiko.cisco_base_connection import CiscoSSHConnection
 

@@ -38,7 +38,6 @@ Examples
 >>> remote_device['device_type'] = best_match
 >>> connection = ConnectHandler(**remote_device)
 """
-
 from typing import Any, List, Optional, Union, Dict
 import re
 import time

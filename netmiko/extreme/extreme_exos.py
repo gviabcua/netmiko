@@ -1,5 +1,4 @@
 """Extreme support."""
-
 import os
 from typing import Any, Callable, Optional, Union, List, Dict
 import re

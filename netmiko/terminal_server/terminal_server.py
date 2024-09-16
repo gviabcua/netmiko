@@ -1,5 +1,4 @@
 """Generic Terminal Server driver."""
-
 from typing import Any
 
 from netmiko.base_connection import BaseConnection
