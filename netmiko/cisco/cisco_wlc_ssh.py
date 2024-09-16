@@ -1,5 +1,4 @@
 """Netmiko Cisco WLC support."""
-
 from typing import Any, Union, Sequence, Iterator, TextIO
 import time
 import re

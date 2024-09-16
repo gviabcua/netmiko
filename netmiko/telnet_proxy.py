@@ -1,6 +1,6 @@
 from typing import Dict, Any, Optional
 import socket
-from netmiko._telnetlib import telnetlib
+import telnetlib
 
 try:
     import socks
@@ -19,7 +19,7 @@ class Telnet(telnetlib.Telnet):
         proxy_dict: Optional[Dict[str, Any]] = None,
     ) -> None:
         self.proxy_dict = proxy_dict
-        super().__init__(host=host, port=port, timeout=timeout)  # type: ignore
+        super().__init__(host=host, port=port, timeout=timeout)
 
     def open(
         self,

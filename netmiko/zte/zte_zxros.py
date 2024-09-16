@@ -3,19 +3,7 @@ from socket import socket
 from typing import Any
 
 from netmiko.cisco_base_connection import CiscoBaseConnection
-from netmiko._telnetlib.telnetlib import (
-    IAC,
-    DO,
-    DONT,
-    WILL,
-    WONT,
-    SB,
-    SE,
-    ECHO,
-    SGA,
-    NAWS,
-    Telnet,
-)
+from telnetlib import IAC, DO, DONT, WILL, WONT, SB, SE, ECHO, SGA, NAWS, Telnet
 
 
 class ZteZxrosBase(CiscoBaseConnection):
@@ -74,5 +62,5 @@ class ZteZxrosTelnet(ZteZxrosBase):
     def telnet_login(self, *args: Any, **kwargs: Any) -> str:
         # set callback function to handle telnet options.
         assert isinstance(self.remote_conn, Telnet)
-        self.remote_conn.set_option_negotiation_callback(self._process_option)  # type: ignore
+        self.remote_conn.set_option_negotiation_callback(self._process_option)
         return super().telnet_login(*args, **kwargs)

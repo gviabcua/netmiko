@@ -1,5 +1,4 @@
 """Fiberstore FSOS Driver."""
-
 from typing import Optional
 from paramiko import SSHClient
 from netmiko.ssh_auth import SSHClient_noauth

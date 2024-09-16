@@ -1,5 +1,4 @@
 """Calix B6 SSH Driver for Netmiko"""
-
 from typing import Any
 import time
 from os import path

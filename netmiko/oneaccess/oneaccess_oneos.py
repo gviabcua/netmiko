@@ -1,5 +1,4 @@
 """Netmiko driver for OneAccess ONEOS"""
-
 from typing import Any
 
 from netmiko.cisco_base_connection import CiscoBaseConnection
