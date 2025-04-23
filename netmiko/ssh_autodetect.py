@@ -83,9 +83,21 @@ SSH_MAPPER_DICT = {
         "priority": 99,
         "dispatch": "_autodetect_std",
     },
+    "aruba_aoscx": {
+        "cmd": "show version",
+        "search_patterns": [r"ArubaOS-CX"],
+        "priority": 99,
+        "dispatch": "_autodetect_std",
+    },
     "ciena_saos": {
         "cmd": "software show",
         "search_patterns": [r"saos"],
+        "priority": 99,
+        "dispatch": "_autodetect_std",
+    },
+    "ciena_waveserver": {
+        "cmd": "software show",
+        "search_patterns": [r"WAVESERVER"],
         "priority": 99,
         "dispatch": "_autodetect_std",
     },
@@ -134,6 +146,12 @@ SSH_MAPPER_DICT = {
         "priority": 99,
         "dispatch": "_autodetect_std",
     },
+    "cumulus_linux": {
+        "cmd": "uname -a",
+        "search_patterns": [r"Linux cumulus"],
+        "priority": 99,
+        "dispatch": "_autodetect_std",
+    },
     "dell_force10": {
         "cmd": "show version",
         "search_patterns": [r"Real Time Operating System Software"],
@@ -173,6 +191,12 @@ SSH_MAPPER_DICT = {
         "priority": 99,
         "dispatch": "_autodetect_std",
     },
+    "h3c_comware": {
+        "cmd": "display version",
+        "search_patterns": ["H3C Comware Software"],
+        "priority": 99,
+        "dispatch": "_autodetect_std",
+    },
     "hp_comware": {
         "cmd": "display version",
         "search_patterns": ["HPE Comware", "HP Comware"],
@@ -208,7 +232,7 @@ SSH_MAPPER_DICT = {
     "linux": {
         "cmd": "uname -a",
         "search_patterns": [r"Linux"],
-        "priority": 99,
+        "priority": 95,
         "dispatch": "_autodetect_std",
     },
     "ericsson_ipos": {
@@ -312,6 +336,35 @@ SSH_MAPPER_DICT = {
     "netgear_prosafe": {
         "cmd": "show version",
         "search_patterns": [r"ProSAFE"],
+        "priority": 99,
+        "dispatch": "_autodetect_std",
+    },
+    "huawei_smartax": {
+        "cmd": "display version",
+        "search_patterns": [r"Huawei Integrated Access Software"],
+        "priority": 99,
+        "dispatch": "_autodetect_std",
+    },
+    "nec_ix": {
+        "cmd": "show hardware",
+        "search_patterns": [r"IX Series"],
+        "priority": 99,
+        "dispatch": "_autodetect_std",
+    },
+    "fiberstore_fsosv2": {
+        "cmd": "show version",
+        "search_patterns": [
+            (
+                r"Fiberstore Co., Limited Internetwork Operating System "
+                r"Software[\s\S]*Version 2.[0-9]*.[0-9]*[\s\S]*"
+            )
+        ],
+        "priority": 99,
+        "dispatch": "_autodetect_std",
+    },
+    "telcosystems_binos": {
+        "cmd": "show version",
+        "search_patterns": [r"BiNOS"],
         "priority": 99,
         "dispatch": "_autodetect_std",
     },
@@ -537,6 +590,7 @@ class SSHDetect(object):
             r"command not found",
             r"Syntax Error: unexpected argument",
             r"% Unrecognized command found at",
+            r"% Unknown command, the error locates at",
         ]
         if not cmd or not search_patterns:
             return 0

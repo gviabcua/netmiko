@@ -17,6 +17,7 @@ from netmiko.arista import AristaFileTransfer
 from netmiko.arris import ArrisCERSSH
 from netmiko.apresia import ApresiaAeosSSH, ApresiaAeosTelnet
 from netmiko.aruba import ArubaOsSSH, ArubaCxSSH
+from netmiko.asterfusion import AsterfusionAsterNOSSSH
 from netmiko.audiocode import (
     Audiocode72SSH,
     Audiocode66SSH,
@@ -25,6 +26,8 @@ from netmiko.audiocode import (
     Audiocode66Telnet,
     AudiocodeShellTelnet,
 )
+
+from netmiko.bintec import BintecBossSSH, BintecBossTelnet
 from netmiko.brocade import BrocadeFOSSSH
 from netmiko.broadcom import BroadcomIcosSSH
 from netmiko.calix import CalixB6SSH, CalixB6Telnet
@@ -32,7 +35,13 @@ from netmiko.casa import CasaCMTSSSH
 from netmiko.cdot import CdotCrosSSH
 from netmiko.centec import CentecOSSSH, CentecOSTelnet
 from netmiko.checkpoint import CheckPointGaiaSSH
-from netmiko.ciena import CienaSaosSSH, CienaSaosTelnet, CienaSaosFileTransfer
+from netmiko.ciena import (
+    CienaSaosSSH,
+    CienaSaos10SSH,
+    CienaWaveserverSSH,
+    CienaSaosTelnet,
+    CienaSaosFileTransfer,
+)
 from netmiko.cisco import CiscoAsaSSH, CiscoAsaFileTransfer
 from netmiko.cisco import CiscoApicSSH
 from netmiko.cisco import CiscoFtdSSH
@@ -42,7 +51,7 @@ from netmiko.cisco import (
     CiscoIosTelnet,
     CiscoIosSerial,
 )
-from netmiko.cisco import CiscoNxosSSH, CiscoNxosFileTransfer
+from netmiko.cisco import CiscoNxosSSH, CiscoNxosTelnet, CiscoNxosFileTransfer
 from netmiko.cisco import CiscoS200SSH, CiscoS200Telnet
 from netmiko.cisco import CiscoS300SSH, CiscoS300Telnet
 from netmiko.cisco import CiscoTpTcCeSSH
@@ -53,7 +62,9 @@ from netmiko.citrix import NetscalerSSH
 from netmiko.classicdevices import ClassicdevicesSSH
 from netmiko.classicdevices import ClassicdevicesTelnet
 from netmiko.cloudgenix import CloudGenixIonSSH
+from netmiko.corelight import CorelightLinuxSSH
 from netmiko.coriant import CoriantSSH
+from netmiko.cumulus import CumulusLinuxSSH
 from netmiko.dell import DellDNOS6SSH
 from netmiko.dell import DellDNOS6Telnet
 from netmiko.dell import DellForce10SSH
@@ -64,6 +75,8 @@ from netmiko.dell import DellPowerConnectTelnet
 from netmiko.dell import DellIsilonSSH
 from netmiko.digi import DigiTransportSSH
 from netmiko.dlink import DlinkDSTelnet, DlinkDSSSH
+from netmiko.edgecore import EdgecoreSonicSSH
+from netmiko.ekinops import EkinopsEk360SSH
 from netmiko.eltex import EltexSSH, EltexEsrSSH
 from netmiko.endace import EndaceSSH
 from netmiko.enterasys import EnterasysSSH
@@ -84,7 +97,12 @@ from netmiko.extreme import ExtremeVspSSH
 from netmiko.extreme import ExtremeWingSSH
 from netmiko.f5 import F5TmshSSH
 from netmiko.f5 import F5LinuxSSH
-from netmiko.fiberstore import FiberstoreFsosSSH
+from netmiko.fiberstore import (
+    FiberstoreFsosSSH,
+    FiberstoreFsosV2SSH,
+    FiberstoreFsosV2Telnet,
+    FiberstoreNetworkOSSSH,
+)
 from netmiko.flexvnf import FlexvnfSSH
 from netmiko.fortinet import FortinetSSH
 from netmiko.garderos import GarderosGrsSSH
@@ -93,10 +111,12 @@ from netmiko.hillstone import HillstoneStoneosSSH
 from netmiko.hp import HPProcurveSSH, HPProcurveTelnet, HPComwareSSH, HPComwareTelnet
 from netmiko.huawei import HuaweiSSH, HuaweiVrpv8SSH, HuaweiTelnet
 from netmiko.huawei import HuaweiSmartAXSSH
+from netmiko.infinera import InfineraPacketSSH, InfineraPacketTelnet
 from netmiko.ipinfusion import IpInfusionOcNOSSSH, IpInfusionOcNOSTelnet
 from netmiko.juniper import JuniperSSH, JuniperTelnet, JuniperScreenOsSSH
 from netmiko.juniper import JuniperFileTransfer
 from netmiko.keymile import KeymileSSH, KeymileNOSSSH
+from netmiko.lancom import LancomLCOSSX4SSH
 from netmiko.linux import LinuxSSH, LinuxFileTransfer
 from netmiko.maipu import MaipuSSH
 from netmiko.maipu import MaipuTelnet
@@ -113,6 +133,7 @@ from netmiko.nokia import (
     NokiaSrlSSH,
 )
 from netmiko.netgear import NetgearProSafeSSH
+from netmiko.nec import NecIxSSH, NecIxTelnet
 from netmiko.oneaccess import OneaccessOneOSTelnet, OneaccessOneOSSSH
 from netmiko.optilink import OptilinkEOLT9702Telnet
 from netmiko.optilink import OptilinkEOLT11444Telnet
@@ -128,11 +149,12 @@ from netmiko.raisecom import RaisecomRoapTelnet
 from netmiko.ruckus import RuckusFastironSSH
 from netmiko.ruckus import RuckusFastironTelnet
 from netmiko.ruijie import RuijieOSSSH, RuijieOSTelnet
+from netmiko.silverpeak import SilverPeakVXOASSH
 from netmiko.sixwind import SixwindOSSSH
 from netmiko.sophos import SophosSfosSSH
 from netmiko.teldat import TeldatCITSSH, TeldatCITTelnet
-from netmiko.terminal_server import TerminalServerSSH
-from netmiko.terminal_server import TerminalServerTelnet
+from netmiko.telcosystems import TelcoSystemsBinosSSH, TelcoSystemsBinosTelnet
+from netmiko.terminal_server import TerminalServerSSH, TerminalServerTelnet
 from netmiko.tplink import TPLinkJetStreamSSH, TPLinkJetStreamTelnet
 from netmiko.ubiquiti import UbiquitiEdgeRouterSSH, UbiquitiEdgeRouterFileTransfer
 from netmiko.ubiquiti import UbiquitiEdgeSSH
@@ -174,11 +196,13 @@ CLASS_MAPPER_BASE = {
     "aruba_aoscx": ArubaCxSSH,
     "aruba_osswitch": HPProcurveSSH,
     "aruba_procurve": HPProcurveSSH,
+    "asterfusion_asternos": AsterfusionAsterNOSSSH,
     "audiocode_72": Audiocode72SSH,
     "audiocode_66": Audiocode66SSH,
     "audiocode_shell": AudiocodeShellSSH,
     "avaya_ers": ExtremeErsSSH,
     "avaya_vsp": ExtremeVspSSH,
+    "bintec_boss": BintecBossSSH,
     "broadcom_icos": BroadcomIcosSSH,
     "brocade_fos": BrocadeFOSSSH,
     "brocade_fastiron": RuckusFastironSSH,
@@ -192,6 +216,8 @@ CLASS_MAPPER_BASE = {
     "cdot_cros": CdotCrosSSH,
     "centec_os": CentecOSSSH,
     "ciena_saos": CienaSaosSSH,
+    "ciena_saos10": CienaSaos10SSH,
+    "ciena_waveserver": CienaWaveserverSSH,
     "cisco_asa": CiscoAsaSSH,
     "cisco_apic": CiscoApicSSH,
     "cisco_ftd": CiscoFtdSSH,
@@ -206,7 +232,9 @@ CLASS_MAPPER_BASE = {
     "cisco_xr": CiscoXrSSH,
     "classicdevices": ClassicdevicesSSH,
     "cloudgenix_ion": CloudGenixIonSSH,
+    "corelight_linux": CorelightLinuxSSH,
     "coriant": CoriantSSH,
+    "cumulus_linux": CumulusLinuxSSH,
     "dell_dnos9": DellForce10SSH,
     "dell_force10": DellForce10SSH,
     "dell_os6": DellDNOS6SSH,
@@ -217,7 +245,9 @@ CLASS_MAPPER_BASE = {
     "dell_isilon": DellIsilonSSH,
     "dlink_ds": DlinkDSSSH,
     "digi_transport": DigiTransportSSH,
+    "edgecore_sonic": EdgecoreSonicSSH,
     "endace": EndaceSSH,
+    "ekinops_ek360": EkinopsEk360SSH,
     "eltex": EltexSSH,
     "eltex_esr": EltexEsrSSH,
     "enterasys": EnterasysSSH,
@@ -238,11 +268,14 @@ CLASS_MAPPER_BASE = {
     "f5_tmsh": F5TmshSSH,
     "f5_linux": F5LinuxSSH,
     "fiberstore_fsos": FiberstoreFsosSSH,
+    "fiberstore_fsosv2": FiberstoreFsosV2SSH,
+    "fiberstore_networkos": FiberstoreNetworkOSSSH,
     "flexvnf": FlexvnfSSH,
     "fortinet": FortinetSSH,
     "garderos_grs": GarderosGrsSSH,
     "generic": GenericSSH,
     "generic_termserver": TerminalServerSSH,
+    "h3c_comware": HPComwareSSH,
     "hillstone_stoneos": HillstoneStoneosSSH,
     "hp_comware": HPComwareSSH,
     "hp_procurve": HPProcurveSSH,
@@ -251,12 +284,14 @@ CLASS_MAPPER_BASE = {
     "huawei_olt": HuaweiSmartAXSSH,
     "huawei_vrp": HuaweiSSH,
     "huawei_vrpv8": HuaweiVrpv8SSH,
+    "infinera_packet": InfineraPacketSSH,
     "ipinfusion_ocnos": IpInfusionOcNOSSSH,
     "juniper": JuniperSSH,
     "juniper_junos": JuniperSSH,
     "juniper_screenos": JuniperScreenOsSSH,
     "keymile": KeymileSSH,
     "keymile_nos": KeymileNOSSSH,
+    "lancom_lcossx4": LancomLCOSSX4SSH,
     "linux": LinuxSSH,
     "mikrotik_routeros": MikrotikRouterOsSSH,
     "mikrotik_switchos": MikrotikSwitchOsSSH,
@@ -264,6 +299,7 @@ CLASS_MAPPER_BASE = {
     "mellanox_mlnxos": MellanoxMlnxosSSH,
     "mrv_lx": MrvLxSSH,
     "mrv_optiswitch": MrvOptiswitchSSH,
+    "nec_ix": NecIxSSH,
     "netapp_cdot": NetAppcDotSSH,
     "netgear_prosafe": NetgearProSafeSSH,
     "netscaler": NetscalerSSH,
@@ -278,9 +314,11 @@ CLASS_MAPPER_BASE = {
     "raisecom_roap": RaisecomRoapSSH,
     "ruckus_fastiron": RuckusFastironSSH,
     "ruijie_os": RuijieOSSSH,
+    "silverpeak_vxoa": SilverPeakVXOASSH,
     "sixwind_os": SixwindOSSSH,
     "sophos_sfos": SophosSfosSSH,
     "supermicro_smis": SmciSwitchSmisSSH,
+    "telcosystems_binos": TelcoSystemsBinosSSH,
     "teldat_cit": TeldatCITSSH,
     "tplink_jetstream": TPLinkJetStreamSSH,
     # ubiquiti_airos - Placeholder agreed to with NTC (if this driver is created in future)
@@ -338,12 +376,14 @@ CLASS_MAPPER["aruba_procurve_telnet"] = HPProcurveTelnet
 CLASS_MAPPER["audiocode_72_telnet"] = Audiocode72Telnet
 CLASS_MAPPER["audiocode_66_telnet"] = Audiocode66Telnet
 CLASS_MAPPER["audiocode_shell_telnet"] = AudiocodeShellTelnet
+CLASS_MAPPER["bintec_boss_telnet"] = BintecBossTelnet
 CLASS_MAPPER["brocade_fastiron_telnet"] = RuckusFastironTelnet
 CLASS_MAPPER["brocade_netiron_telnet"] = ExtremeNetironTelnet
 CLASS_MAPPER["calix_b6_telnet"] = CalixB6Telnet
 CLASS_MAPPER["centec_os_telnet"] = CentecOSTelnet
 CLASS_MAPPER["ciena_saos_telnet"] = CienaSaosTelnet
 CLASS_MAPPER["cisco_ios_telnet"] = CiscoIosTelnet
+CLASS_MAPPER["cisco_nxos_telnet"] = CiscoNxosTelnet
 CLASS_MAPPER["cisco_xr_telnet"] = CiscoXrTelnet
 CLASS_MAPPER["cisco_s200_telnet"] = CiscoS200Telnet
 CLASS_MAPPER["cisco_s300_telnet"] = CiscoS300Telnet
@@ -354,6 +394,7 @@ CLASS_MAPPER["dlink_ds_telnet"] = DlinkDSTelnet
 CLASS_MAPPER["extreme_telnet"] = ExtremeExosTelnet
 CLASS_MAPPER["extreme_exos_telnet"] = ExtremeExosTelnet
 CLASS_MAPPER["extreme_netiron_telnet"] = ExtremeNetironTelnet
+CLASS_MAPPER["fiberstore_fsosv2_telnet"] = FiberstoreFsosV2Telnet
 CLASS_MAPPER["generic_telnet"] = GenericTelnet
 CLASS_MAPPER["generic_termserver_telnet"] = TerminalServerTelnet
 CLASS_MAPPER["genexis_solt33_telnet"] = GenexisSOLT33Telnet
@@ -361,9 +402,11 @@ CLASS_MAPPER["hp_procurve_telnet"] = HPProcurveTelnet
 CLASS_MAPPER["hp_comware_telnet"] = HPComwareTelnet
 CLASS_MAPPER["huawei_telnet"] = HuaweiTelnet
 CLASS_MAPPER["huawei_olt_telnet"] = HuaweiSmartAXSSH
+CLASS_MAPPER["infinera_packet_telnet"] = InfineraPacketTelnet
 CLASS_MAPPER["ipinfusion_ocnos_telnet"] = IpInfusionOcNOSTelnet
 CLASS_MAPPER["juniper_junos_telnet"] = JuniperTelnet
 CLASS_MAPPER["maipu_telnet"] = MaipuTelnet
+CLASS_MAPPER["nec_ix_telnet"] = NecIxTelnet
 CLASS_MAPPER["nokia_sros_telnet"] = NokiaSrosTelnet
 CLASS_MAPPER["oneaccess_oneos_telnet"] = OneaccessOneOSTelnet
 CLASS_MAPPER["optilink_eolt9702_telnet"] = OptilinkEOLT9702Telnet
@@ -374,6 +417,7 @@ CLASS_MAPPER["raisecom_telnet"] = RaisecomRoapTelnet
 CLASS_MAPPER["ruckus_fastiron_telnet"] = RuckusFastironTelnet
 CLASS_MAPPER["ruijie_os_telnet"] = RuijieOSTelnet
 CLASS_MAPPER["supermicro_smis_telnet"] = SmciSwitchSmisTelnet
+CLASS_MAPPER["telcosystems_binos_telnet"] = TelcoSystemsBinosTelnet
 CLASS_MAPPER["teldat_cit_telnet"] = TeldatCITTelnet
 CLASS_MAPPER["tplink_jetstream_telnet"] = TPLinkJetStreamTelnet
 CLASS_MAPPER["yamaha_telnet"] = YamahaTelnet
