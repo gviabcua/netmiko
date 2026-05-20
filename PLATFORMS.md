@@ -89,6 +89,7 @@
 - Bintec BOSS (Bintec/Funkwerk)
 - Brocade Fabric OS
 - C-DOT CROS
+- Check Point GAiA
 - Ciena SAOS
 - Ciena SAOS10
 - Ciena Waveserver
@@ -259,6 +260,7 @@
 - huawei_smartaxmmi
 - huawei_vrp
 - huawei_vrpv8
+- iij_seilos
 - infinera_packet
 - ipinfusion_ocnos
 - juniper
@@ -293,7 +295,6 @@
 - raisecom_ros
 - ruckus_fastiron
 - ruijie_os
-- iij_seilos
 - silverpeak_vxoa
 - sixwind_os
 - sophos_sfos
@@ -394,4 +395,3 @@
 - mikrotik_routeros
 - ubiquiti_edgerouter
 - zpe_nodegrid
-
