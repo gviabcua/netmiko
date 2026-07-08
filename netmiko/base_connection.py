@@ -487,7 +487,21 @@ class BaseConnection:
 
         # Establish the remote connection
         if auto_connect:
-            self._open()
+            try:
+                self._open()
+            except Exception:
+                # If the connection fails before disconnect() is ever reached
+                # (establish_connection errors: authentication, TCP timeout,
+                # SSH key-exchange/negotiation), the SecretsFilter registered
+                # above would be stranded on the module logger and leaked.
+                # Remove it (and close any session log) before propagating.
+                try:
+                    log.removeFilter(self._secrets_filter)
+                    if self.session_log:
+                        self.session_log.close()
+                except Exception:
+                    pass
+                raise
 
     def _open(self) -> None:
         """Decouple connection creation from __init__ for mocking."""
